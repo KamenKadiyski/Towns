@@ -4,6 +4,15 @@ $(document).ready(function() {
 	$('#btnShuffle').click(shuffleTowns)
 });
 
+
+
+function showMessage(msg) {
+	$('#result').text(msg).css('display', 'block');
+	setTimeout(function() {
+		$('#result').hide('blind',{}, 500);
+	}, 3000);
+}
+
 function deleteTown() {
 	let townName = $('#townName').val();
 	$('#townName').val('');
@@ -15,10 +24,13 @@ function deleteTown() {
 		}
 	}
 	if (removed)
-		$('#result').text(townName + " deleted.");
+		showMessage(townName + " deleted.");
 	else
-		$('#result').text(townName + " not found.");
+		showMessage(townName + " not found.");
 }
+
+
+
 function addTown() {
 	let townName = $('#townNameForAdd').val();
 	$('#townNameForAdd').val('');
